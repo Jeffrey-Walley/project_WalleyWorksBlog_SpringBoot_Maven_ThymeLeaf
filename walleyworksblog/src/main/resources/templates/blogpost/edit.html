@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <!-- webjars bootstrap css -->
+    <link href="../../webjars/bootstrap/5.1.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../css/standard.css" rel="stylesheet">
+    <title>Edit a Blog Post</title>
+</head>
+<body>
+
+<div th:replace="fragments/navbar"></div>
+
+<div class="container">
+    <p>Edit a Blog Post: </p>
+
+    <form action="#" th:action="@{~/blogposts/update/{id}(id=${blogPost.id})}" th:object="${blogPost}" method="post">
+        <!-- commented out old table elements, relying on Bootstrap table-->
+        <div class="form-group">
+            <input type="text" class="form-control" placeholder="Blog Title..." th:field="*{title}">
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control" placeholder="Your Name..." th:field="*{author}">
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control" placeholder="Blog Entry..." th:field="*{blogEntry}">
+        </div>
+
+        <button class="btn btn-primary">Submit Edit</button>
+    </form>
+</div>
+
+<!-- using 'labels -->
+<!--<form action="#" th:action="@{/blogposts/update/{id}(id={blogPost.id})}" th:object="${blogPost}" method="POST">
+    &lt;!&ndash; commented out old table elements, relying on Bootstrap table&ndash;&gt;
+    <label for="blogTitle">Title:</label>
+    <input type="text" name="blogTitle" th:field="*{title}" />
+
+    <label for="blogAuthor">Author:</label>
+    <input type="text" name="blogAuthor" th:field="*{author}" />
+
+    <label for="blogEntry">Blog Entry:</label>
+    <input type="text" name="blogEntry" th:field="*{blogEntry}" />
+
+    <button class="btn btn-primary">Submit Edit</button>
+</form>-->
+
+        <!-- webjars bootstrap and jquery and javascript-->
+        <script src="../../webjars/bootstrap/5.1.0/js/bootstrap.min.js"></script>
+        <script src="../../webjars/jquery/1.9.1/jquery.min.js"></script>
+</body>
+</html>

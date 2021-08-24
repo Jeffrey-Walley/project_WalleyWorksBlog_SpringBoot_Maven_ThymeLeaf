@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <!-- webjars bootstrap css -->
+    <link href="../../webjars/bootstrap/5.1.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../css/standard.css" rel="stylesheet">
+    <title>the New Blog Post Page</title>
+</head>
+<body>
+
+<!-- <div th:replace="fragments/navbar :: navbar"></div> -->
+<!-- alternate way to use fragments, below -->
+<div th:replace="fragments/navbar"></div>
+
+<div class="container">
+<p>Use the FORM below to enter a NEW Blog Post: </p>
+
+<!-- the attributes in the form tag specify that the action will be a 'th:action' <ThymeLeaf>
+     specifies the endpoint that lives on our Controller. we then specify what the information resolves to via an object
+     (which is th:object) we denote that we are resolving that into object 'blogPost' we will use the 'post' method
+-->
+<form action="#" th:action="@{/blogposts}" th:object="${blogPost}" method="post">
+ <!-- commented out old table elements, relying on Bootstrap table-->
+    <div class="form-group">
+        <input type="text" class="form-control" placeholder="Blog Title..." th:field="*{title}">
+    </div>
+    <div class="form-group">
+        <input type="text" class="form-control" placeholder="Your Name..." th:field="*{author}">
+    </div>
+    <div class="form-group">
+        <input type="text" class="form-control" placeholder="Blog Entry..." th:field="*{blogEntry}">
+    </div>
+
+    <button class="btn btn-primary">Submit Post</button>
+</form>
+</div>
+    <!-- create the table element -->
+    <!--<table>
+        <tr>  &lt;!&ndash; adds table row to the table &ndash;&gt;
+            <td>Title</td>
+            <td><input typ="text" th:field="*{title}" /></td>
+        </tr>
+
+        <tr>
+            <td>Author</td>
+            <td><input typ="text" th:field="*{author}" /></td>
+        </tr>
+
+        <tr>
+            <td>Blog Entry: </td>
+            <td><input typ="text" th:field="*{blogEntry}" /></td>
+        </tr>
+        <tr>
+            <td><button type="submit">Submit Post</button></td>
+        </tr>
+    </table>
+-->
+
+   <!-- webjars bootstrap and jquery and javascript-->
+    <script src="../../webjars/bootstrap/5.1.0/js/bootstrap.min.js"></script>
+    <script src="../../webjars/jquery/1.9.1/jquery.min.js"></script>
+</body>
+</html>
